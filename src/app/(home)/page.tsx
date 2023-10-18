@@ -7,27 +7,15 @@ import { PromoBanner } from './components/promo-banner'
 
 export default async function Home() {
   const deals = await prismaClient.product.findMany({
-    where: {
-      discountPercentage: {
-        gt: 0,
-      },
-    },
+    where: { discountPercentage: { gt: 0 } },
   })
 
   const keyboards = await prismaClient.product.findMany({
-    where: {
-      category: {
-        slug: 'keyboards',
-      },
-    },
+    where: { category: { slug: 'keyboards' } },
   })
 
   const mouses = await prismaClient.product.findMany({
-    where: {
-      category: {
-        slug: 'mouses',
-      },
-    },
+    where: { category: { slug: 'mouses' } },
   })
 
   return (
