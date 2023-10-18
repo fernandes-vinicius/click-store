@@ -5,7 +5,7 @@ import { ProductList } from './components/product-list'
 import { SessionTitle } from './components/session-title'
 import { PromoBanner } from './components/promo-banner'
 
-export default async function Home() {
+export default async function HomePage() {
   const deals = await prismaClient.product.findMany({
     where: { discountPercentage: { gt: 0 } },
   })
@@ -19,7 +19,7 @@ export default async function Home() {
   })
 
   return (
-    <main className="flex flex-col gap-8 py-8">
+    <div className="flex flex-col gap-8 py-8">
       <PromoBanner
         src="/banner-home-01.png"
         alt="Até 55% de desconto só esse mês!"
@@ -53,6 +53,6 @@ export default async function Home() {
         <SessionTitle>Mouses</SessionTitle>
         <ProductList products={mouses} />
       </div>
-    </main>
+    </div>
   )
 }
