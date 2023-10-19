@@ -1,8 +1,8 @@
 import { prismaClient } from '@/lib/prisma'
+import { ProductList } from '@/components/ui/product-list'
+import { SectionTitle } from '@/components/ui/section-title'
 
 import { Categories } from './components/categories'
-import { ProductList } from './components/product-list'
-import { SessionTitle } from './components/session-title'
 import { PromoBanner } from './components/promo-banner'
 
 export default async function HomePage() {
@@ -30,7 +30,7 @@ export default async function HomePage() {
       </div>
 
       <div>
-        <SessionTitle>Ofertas</SessionTitle>
+        <SectionTitle>Ofertas</SectionTitle>
         <ProductList products={deals} />
       </div>
 
@@ -40,7 +40,7 @@ export default async function HomePage() {
       />
 
       <div>
-        <SessionTitle>Teclados</SessionTitle>
+        <SectionTitle>Teclados</SectionTitle>
         <ProductList products={keyboards} />
       </div>
 
@@ -50,7 +50,7 @@ export default async function HomePage() {
       />
 
       <div>
-        <SessionTitle>Mouses</SessionTitle>
+        <SectionTitle>Mouses</SectionTitle>
         <ProductList products={mouses} />
       </div>
     </div>

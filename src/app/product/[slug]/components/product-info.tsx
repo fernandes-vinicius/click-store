@@ -1,16 +1,11 @@
 'use client'
 
 import React from 'react'
-import {
-  ArrowDownIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  TruckIcon,
-} from 'lucide-react'
+import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
 import { ProductWithTotalPrice } from '@/helpers/product'
 import { Button } from '@/components/ui/button'
+import { DiscountBadge } from '@/components/ui/discount-badge'
 
 interface ProductInfoProps {
   product: Pick<
@@ -38,11 +33,8 @@ export function ProductInfo({ product }: ProductInfoProps) {
         <h1 className="text-xl font-bold">
           R$ {product.totalPrice.toFixed(2)}
         </h1>
-
         {product.discountPercentage > 0 && (
-          <Badge className="absolute left-3 top-3 px-2 py-[2px]">
-            <ArrowDownIcon size={14} /> {product.discountPercentage}%
-          </Badge>
+          <DiscountBadge>{product.discountPercentage}%</DiscountBadge>
         )}
       </div>
 
@@ -60,7 +52,9 @@ export function ProductInfo({ product }: ProductInfoProps) {
         >
           <ArrowLeftIcon size={16} />
         </Button>
+
         <span>{quantity}</span>
+
         <Button
           size="icon"
           variant="outline"

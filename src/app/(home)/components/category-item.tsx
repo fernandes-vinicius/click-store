@@ -10,10 +10,10 @@ interface CategoryItemProps {
 
 export function CategoryItem({ category }: CategoryItemProps) {
   return (
-    <Link href={`/category/${category.slug}`}>
+    <Link href={`/category/${category.slug}`} className="w-full">
       <Badge
         variant="outline"
-        className="items-center justify-center gap-2 rounded-lg py-3"
+        className="flex items-center justify-center gap-2 rounded-lg py-3"
       >
         {CATEGORY_ICON[category.slug as CategoryIconType]}
         <span className="text-xs font-bold">{category.name}</span>
