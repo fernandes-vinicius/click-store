@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import { AuthProvider } from '@/providers/auth'
+import { CartProvider } from '@/providers/cart'
 import { Header } from '@/components/ui/header'
 import { Footer } from '@/components/ui/footer'
 
@@ -24,9 +25,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={inter.className}>
         <div className="flex h-full flex-col">
           <AuthProvider>
-            <Header />
-            <div className="flex-1">{children}</div>
-            <Footer />
+            <CartProvider>
+              <Header />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </CartProvider>
           </AuthProvider>
         </div>
       </body>

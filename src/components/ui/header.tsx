@@ -22,6 +22,7 @@ import {
 } from './sheet'
 import { Avatar, AvatarFallback, AvatarImage } from './avatar'
 import { Separator } from './separator'
+import { Cart } from './cart'
 
 export function Header() {
   const { data, status } = useSession()
@@ -116,9 +117,17 @@ export function Header() {
         </h1>
       </Link>
 
-      <Button size="icon" variant="outline">
-        <ShoppingCartIcon />
-      </Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button size="icon" variant="outline">
+            <ShoppingCartIcon />
+          </Button>
+        </SheetTrigger>
+
+        <SheetContent side="right">
+          <Cart />
+        </SheetContent>
+      </Sheet>
     </Card>
   )
 }
