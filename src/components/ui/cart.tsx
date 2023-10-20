@@ -42,7 +42,7 @@ export function Cart() {
               products.map((product) => (
                 <CartItem
                   key={product.id}
-                  product={computeProductTotalPrice(product as any) as any} // TODO
+                  product={computeProductTotalPrice(product as never) as never} // TODO
                 />
               ))
             ) : (
