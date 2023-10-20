@@ -21,13 +21,13 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={inter.className}>
         <div className="flex h-full flex-col">
           <AuthProvider>
             <CartProvider>
               <Header />
-              <div className="flex-1">{children}</div>
+              <div className="flex-1 lg:container lg:max-w-5xl">{children}</div>
               <Footer />
             </CartProvider>
           </AuthProvider>
