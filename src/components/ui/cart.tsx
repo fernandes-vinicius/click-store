@@ -3,9 +3,11 @@
 import React from 'react'
 import { ShoppingCartIcon } from 'lucide-react'
 import { loadStripe } from '@stripe/stripe-js'
+import { useSession } from 'next-auth/react'
 
 import { computeProductTotalPrice } from '@/helpers/product'
 import { createCheckout } from '@/actions/checkout'
+import { createOrder } from '@/actions/order'
 import { CartContext } from '@/providers/cart'
 
 import { Badge } from './badge'
@@ -15,11 +17,18 @@ import { ScrollArea } from './scroll-area'
 import { Button } from './button'
 
 export function Cart() {
+  const session = useSession()
+
   const { products, subtotal, totalDiscount, total } =
     React.useContext(CartContext)
 
   async function handleFinishPurchaseClick() {
-    const checkout = await createCheckout(products)
+    // redirecionar para o login
+    if (!session.data?.user) return
+
+    const order = await createOrder(products, session.data.user.id)
+
+    const checkout = await createCheckout(products, order.id)
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
 
